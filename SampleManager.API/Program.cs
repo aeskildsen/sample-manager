@@ -9,6 +9,8 @@ builder.Services.Configure<LibrarySettings>(
 
 // Add services to the container
 builder.Services.AddSingleton<IFileSystemService, FileSystemService>();
+builder.Services.AddSingleton<IAudioFileService, AudioFileService>();
+builder.Services.AddSingleton<IPackService, PackService>();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
