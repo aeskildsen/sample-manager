@@ -12,9 +12,12 @@ public class FileSystemService : IFileSystemService
     {
         _settings = options.Value;
     }
-    public IEnumerable<string> GetRootFolders()
+    public IEnumerable<string> GetSubFolders(string relativePath)
     {
-        return Directory.EnumerateDirectories(_settings.SampleLibraryPath);
+        string folderPath = ValidateAndResolvePath(relativePath);
+
+        return Directory.EnumerateDirectories(folderPath)
+            .Select(dir => Path.GetRelativePath(_settings.SampleLibraryPath, dir));
     }
 
     public IEnumerable<string> GetAudioFilePathsInFolder(string relativePath)
@@ -22,10 +25,10 @@ public class FileSystemService : IFileSystemService
         string folderPath = ValidateAndResolvePath(relativePath);
         
         return Directory.EnumerateFiles(folderPath)
-        .Where(file => _settings.AudioFileExtensions.Any(extension =>
-            file.EndsWith(extension, StringComparison.OrdinalIgnoreCase)
-        ))
-        .Select(file => Path.GetRelativePath(_settings.SampleLibraryPath, file));
+            .Where(file => _settings.AudioFileExtensions.Any(extension =>
+                file.EndsWith(extension, StringComparison.OrdinalIgnoreCase)
+            ))
+            .Select(file => Path.GetRelativePath(_settings.SampleLibraryPath, file));
     }
 
     private string ValidateAndResolvePath(string relativePath)
