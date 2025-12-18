@@ -31,7 +31,7 @@ public class FileSystemService : IFileSystemService
             .Select(file => Path.GetRelativePath(_settings.SampleLibraryPath, file));
     }
 
-    private string ValidateAndResolvePath(string relativePath)
+    public string ValidateAndResolvePath(string relativePath)
     {
         string fullPath = Path.GetFullPath(
             Path.Combine(_settings.SampleLibraryPath, relativePath)

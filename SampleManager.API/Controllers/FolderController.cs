@@ -5,11 +5,11 @@ using SampleManager.API.Services;
 
 [ApiController]
 [Route("api/[controller]")]
-public class FolderController : ControllerBase
+public class FoldersController : ControllerBase
 {
     private readonly IAudioFileService _audioFileService;
     private readonly IFileSystemService _fileSystemService;
-    public FolderController(IAudioFileService audioFileService, IFileSystemService fileSystemService)
+    public FoldersController(IAudioFileService audioFileService, IFileSystemService fileSystemService)
     {
         _audioFileService = audioFileService;
         _fileSystemService = fileSystemService;

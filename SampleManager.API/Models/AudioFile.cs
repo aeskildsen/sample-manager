@@ -10,7 +10,11 @@ public class AudioFile
     public required string LicenseSlug { get; set; }
     //public required enum AudioFormat { get; set; }
     // Optional metadata
-    public uint? SampleRate { get; set; }
+    public int? SampleRate { get; set; }
     public TimeSpan? Duration { get; set; }
-    public string? MetaData { get; set; }
+    public int? Channels { get; set; }
+    public int? BitDepth { get; set; }
+    public int? BitRate { get; set; }
+    public string? Tags { get; set; }
+    public string? Format { get; set; }
 }
