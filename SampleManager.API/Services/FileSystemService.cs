@@ -1,5 +1,5 @@
 ﻿namespace SampleManager.API.Services;
-
+using SampleManager.API.Models;
 using System.Data;
 using Microsoft.Extensions.Options;
 using SampleManager.API.Configuration;
@@ -29,6 +29,24 @@ public class FileSystemService : IFileSystemService
                 file.EndsWith(extension, StringComparison.OrdinalIgnoreCase)
             ))
             .Select(file => Path.GetRelativePath(_settings.SampleLibraryPath, file));
+    }
+
+    public FolderNode GetFolderTree(string relativePath = "")
+    {
+        string fullPath = ValidateAndResolvePath(relativePath);
+        string name = relativePath == "" ? "Library" : Path.GetFileName(fullPath);
+        var subDirs = Directory.GetDirectories(fullPath);
+        List<FolderNode> subFolders = new();
+        foreach (string subDir in subDirs)
+        {
+            string relativeSubDirPath = Path.Combine(relativePath, Path.GetFileName(subDir));
+            subFolders.Add(GetFolderTree(relativeSubDirPath));
+        }
+        return new FolderNode {
+            Name = name,
+            Path = relativePath,
+            SubFolders = subFolders,
+        };
     }
 
     public string ValidateAndResolvePath(string relativePath)
