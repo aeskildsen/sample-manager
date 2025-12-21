@@ -110,11 +110,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       </div>
 
       <div className='metadata'>
+        { metadata && (
         <table>
-          <tr><td>Samplerate:</td><tr>{metadata.sampleRate}</tr></tr>
-          <tr><td>Bit depth:</td><tr>{metadata.bitDepth}</tr></tr>
-          <tr><td>Channels:</td><tr>{metadata.channels}</tr></tr>
+          <tr><td>Samplerate:</td><td>{metadata.sampleRate}</td></tr>
+          <tr><td>Bit depth:</td><td>{metadata.bitDepth}</td></tr>
+          <tr><td>Channels:</td><td>{metadata.channels}</td></tr>
         </table>
+        )}
       </div>
     </div>
   )
