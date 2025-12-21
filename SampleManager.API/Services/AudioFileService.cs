@@ -71,7 +71,7 @@ public class AudioFileService : IAudioFileService
         var metadata = TagLib.File.Create(Path.Combine(_settings.SampleLibraryPath, relativePath));
         int sampleRate = metadata.Properties.AudioSampleRate;
         int channels = metadata.Properties.AudioChannels;
-        TimeSpan duration = metadata.Properties.Duration;
+        double duration = metadata.Properties.Duration.TotalSeconds;
         int bitDepth = metadata.Properties.BitsPerSample;
         int bitRate = metadata.Properties.AudioBitrate;
         string rawFormat = metadata.Properties.Description;

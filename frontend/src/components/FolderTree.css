@@ -1,0 +1,23 @@
+.folder-tree {
+  overflow: auto;
+  padding: 0.2rem;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0.3em;
+  }
+  
+  .inactive {
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+  }
+}
+

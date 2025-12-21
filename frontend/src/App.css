@@ -1,0 +1,39 @@
+.app-container {
+  background: rgb(243, 243, 235);
+  
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar breadcrumbs"
+    "sidebar filelist"
+    "transport transport";
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: 50px 40px 1fr 150px;
+}
+
+.panel {
+  border: 1px solid var(--border);
+}
+
+.header {
+  grid-area: header;
+}
+
+.folder-tree {
+  grid-area: sidebar;
+}
+
+.breadcrumbs {
+  grid-area: breadcrumbs;
+}
+
+.file-list {
+  grid-area: filelist;
+}
+
+.player {
+  grid-area: transport;
+}

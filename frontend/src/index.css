@@ -1,0 +1,17 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter Variable', serif;
+  --sidebar-width: 15%;
+  --text: #0e0d0d;
+  --border: rgba(0, 128, 0, 0.326);
+
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: var(--text);
+}

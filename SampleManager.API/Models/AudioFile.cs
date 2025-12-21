@@ -11,7 +11,7 @@ public class AudioFile
     //public required enum AudioFormat { get; set; }
     // Optional metadata
     public int? SampleRate { get; set; }
-    public TimeSpan? Duration { get; set; }
+    public double? Duration { get; set; }
     public int? Channels { get; set; }
     public int? BitDepth { get; set; }
     public int? BitRate { get; set; }

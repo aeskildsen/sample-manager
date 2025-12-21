@@ -1,0 +1,50 @@
+.player {
+  display: flex;
+  
+  .controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    width: 230px;
+    white-space: nowrap;
+
+    .control-row {
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        border: none;
+        background: none;
+      }
+      button.active {
+        color: green;
+      }
+      
+    }
+    .name {
+      font-weight: 700;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 90%;
+    }
+  }
+
+  .waveform-container {
+    flex-grow: 1;
+  }
+
+  .metadata {
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .clock {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.04em; 
+  }
+
+}

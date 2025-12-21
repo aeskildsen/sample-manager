@@ -1,0 +1,35 @@
+.file-list {
+  overflow: auto;
+  padding: 0.2rem;
+  
+  table {
+    border-collapse: collapse;
+  }
+
+  thead {
+    font-weight: 700;
+    
+  }
+  tr {
+    cursor: default;
+    white-space: nowrap;
+  }
+
+  td, th {
+    padding: 0.125em 0.5em 0.25em 0.5em;
+    line-height: 1;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  td.name {
+    max-width: 26vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  td.duration {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+}

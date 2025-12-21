@@ -1,0 +1,143 @@
+.audioPlayer {
+  position: relative;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--background), var(--foreground) 5%);
+  border: 2px solid color-mix(in srgb, var(--background), var(--foreground) 5%);
+  padding: 0;
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+.waveformContainer {
+  border-radius: 4px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--dividers);
+  transition: opacity 0.3s ease;
+  padding: 0.8rem 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 1em;
+  flex-wrap: wrap;
+}
+
+.playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 44px; */
+  /* height: 44px; */
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--accent-secondary);
+  color: var(--background);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.playButton:hover {
+  background: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+.playButton:active {
+  transform: scale(0.95);
+}
+
+.timeDisplay {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+  min-width: 80px;
+}
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.muteButton {
+  background: none;
+  border: none;
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.muteButton:hover {
+  color: var(--accent-primary);
+  /* background: color-mix(in srgb, var(--accent-primary) 10%, transparent); */
+}
+
+.volumeIcon {
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.volumeSlider {
+  width: 80px;
+  height: 4px;
+  background: var(--dividers);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 8em;
+}
+
+.volumeSlider::-webkit-slider-thumb,
+.volumeSlider::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-secondary);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.volumeSlider::-webkit-slider-thumb:hover,
+.volumeSlider::-moz-range-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .audioPlayer {
+    padding: 12px;
+  }
+  
+  .controls {
+    gap: 12px;
+  }
+  
+  .volumeControl {
+    margin-left: 0;
+    margin-top: 8px;
+    flex-basis: 100%;
+  }
+  
+  .volumeSlider {
+    width: 120px;
+  }
+}
