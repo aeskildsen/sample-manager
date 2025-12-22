@@ -34,9 +34,9 @@ export default function FolderTree({ folderTree, loading, handleFolderSelection 
   ))
 
   return (
-    <aside className='folder-tree panel'>
+    <nav className='folder-tree panel'>
       {list}
-    </aside>
+    </nav>
   )
 }
 

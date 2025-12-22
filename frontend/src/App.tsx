@@ -7,6 +7,7 @@ import FileList from './components/FileList'
 import AudioPlayer from './components/AudioPlayer'
 import { useFetch } from './hooks/useFetch'
 import type { FolderNode, FolderContents, AudioFile } from './types/api'
+import { BreadCrumbs } from './components/BreadCrumbs'
 
 const BASE_URL = 'http://localhost:5160/api/'
 
@@ -32,13 +33,18 @@ function App() {
   
   return (
     <div className="app-container">
-      <Header />
+      <Header errors={[folderTreeError, folderContentsError]} />
       <FolderTree
         folderTree={folderTree}
         loading={folderTreeLoading}
         handleFolderSelection={setSelectedFolder}
         />
-      <nav className='breadcrumbs panel'>Current folder: {selectedFolder}</nav>
+      <BreadCrumbs
+        path={selectedFolder}
+        filters={['']}
+        handleLocationChange={setSelectedFolder}
+        />
+      {/* <nav className='breadcrumbs panel'>Current folder: {selectedFolder}</nav> */}
       <FileList
         folderContents={folderContents}
         loading={folderContentsLoading}

@@ -9,23 +9,13 @@ import { formatTime } from '../utils/durations'
 
 export interface AudioPlayerProps {
   url: string | null
-  height?: number
-  waveColor?: string
-  progressColor?: string
-  backgroundColor?: string
-  showControls?: boolean
-  showTime?: boolean
-  showVolume?: boolean
-  metadata: AudioFile
+  metadata: AudioFile | null
 }
 
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({
+export default function AudioPlayer({
   url,
   metadata,
-  height = 130,
-  waveColor = 'green',
-  progressColor = 'green',
-}) => {
+}: AudioPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [volume, setVolume] = useState(0.7)
   const [isLooping, setIsLooping] = useState(false)
@@ -34,22 +24,16 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const { wavesurfer, isReady, isPlaying, currentTime } = useWavesurfer({
     container: containerRef,
     url: url || '',
-    waveColor,
-    progressColor,
-    height,
+    waveColor: 'green',
+    progressColor: 'green',
+    height: 130,
     barWidth: 2,
     barRadius: 1,
     barGap: 1,
     normalize: true,
     dragToSeek: true,
   })
-  /*
-  const getVolumeIcon = () => {
-    if (isMuted || volume === 0) return <FaVolumeMute />
-    if (volume < 0.5) return <FaVolumeDown />
-    return <FaVolumeUp />
-  }
-    */
+  
   const duration = wavesurfer?.getDuration() || 0
   
   const handlePlayPause = () => {
@@ -112,8 +96,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       <div className='metadata'>
         { metadata && (
         <table>
-          <tr><td>Samplerate:</td><td>{metadata.sampleRate}</td></tr>
-          <tr><td>Bit depth:</td><td>{metadata.bitDepth}</td></tr>
+          <tr><td>Samplerate:</td><td>{metadata.sampleRate ? metadata.sampleRate/1000 : '?'} kHz</td></tr>
+          <tr><td>Bit depth:</td><td>{metadata.bitDepth} bit</td></tr>
           <tr><td>Channels:</td><td>{metadata.channels}</td></tr>
         </table>
         )}
@@ -121,5 +105,3 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     </div>
   )
 }
-
-export default AudioPlayer

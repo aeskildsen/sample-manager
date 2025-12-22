@@ -1,5 +1,5 @@
 .app-container {
-  background: rgb(243, 243, 235);
+  background: var(--background);
   
   width: 100vw;
   height: 100vh;
@@ -15,7 +15,7 @@
 }
 
 .panel {
-  border: 1px solid var(--border);
+  border: none;
 }
 
 .header {
@@ -36,4 +36,5 @@
 
 .player {
   grid-area: transport;
+  border-top: 1px solid var(--border);
 }
