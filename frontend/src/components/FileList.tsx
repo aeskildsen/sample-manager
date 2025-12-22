@@ -31,7 +31,7 @@ export default function FileList({
   const list = files.map(file => {
     return (
     <tr key={file.filePath}>
-      <td className="name" onClick={() => handleFileSelection(file)}>{file.name}</td>
+      <td className="name" onClick={() => handleFileSelection(file)}><span className='name'>{file.name}</span></td>
       <td>{file.format}</td>
       <td className="duration">{formatTime(file.duration)}</td>
       <td>{file.channels}</td>

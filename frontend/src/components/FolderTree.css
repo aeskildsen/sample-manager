@@ -7,6 +7,12 @@
     padding: 0;
     margin: 0 0.3em;
   }
+  svg {
+    transition: rotate 150ms ease-in;
+  }
+  .expanded {
+    rotate: 90deg;
+  }
   
   .inactive {
     color: rgba(0, 0, 0, 0.2);
@@ -17,7 +23,17 @@
     border: none;
     color: inherit;
     padding: 0;
+    margin: 0;
     cursor: pointer;
+    transition: color 25ms ease;
+  }
+
+  button:hover {
+    color: green;
+  }
+
+  svg, button {
+    vertical-align: middle;
   }
 }
 

@@ -36,6 +36,13 @@
     overflow: hidden;
     cursor: pointer;
   }
+  
+  span.name {
+    transition: color 100ms ease;
+  }
+  span.name:hover {
+    color: rgb(1, 77, 1);
+  }
 
   td.duration {
     text-align: right;

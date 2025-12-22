@@ -1,7 +1,7 @@
 import './FolderTree.css'
 import type { FolderNode } from '../types/api'
 import type { selectionHandler } from '../types/ui';
-import { MdKeyboardArrowRight, MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { useState } from 'react'
 
 interface FolderTreeProps {
@@ -45,15 +45,13 @@ function TreeNode({name, path, subFolders, handleFolderSelection}: TreeNodeProps
   const hasSubfolders = subFolders.length > 0 
   return (
     <li className="folder-node">
-      { !hasSubfolders ?
-      <span className="inactive"><MdKeyboardArrowRight /></span> :
-      <span onClick={() => setIsExpanded(previous => !previous)}>
-        { isExpanded
-        ? <MdKeyboardArrowDown />
-        : <MdKeyboardArrowRight />
-        }
-      </span>
+      { !hasSubfolders
+        ? <span className="inactive"><MdKeyboardArrowRight /></span>
+        : <span onClick={() => setIsExpanded(previous => !previous)}>
+            <MdKeyboardArrowRight className={isExpanded ? "expanded" : '' } />
+          </span>
       }
+
       <button onClick={() => {
         handleFolderSelection(path)
         setIsExpanded(previous => !previous)
