@@ -7,7 +7,7 @@ export function useFetch<T>(url: string | null) {
 
   useEffect(() => {
     let cancelled = false;
-    async function fetchData(url: string) {
+    async function fetchData(url: string | null) {
       if (!url) return  
       
       try {
